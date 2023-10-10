@@ -47,18 +47,18 @@
 
             <div class="form-section1">
                     <label for="cliente">Cliente</label>
-                    <input autocomplete="off" class="block" id="cliente" type="text">
+                    <input autocomplete="off" class="block" id="cliente" type="text" name="cliente" value="<?php echo $servicio->cliente; ?>">
                     <div id="suggestions" class="suggestions"></div>
                 </div>
 
                 <div class="form-section1">
                     <label for="rfc">RFC</label>
-                    <input class="block" id="rfc" type="text">
+                    <input class="block" id="rfc" type="text" name="rfc" value="<?php echo $servicio->rfc; ?>">
                 </div>
 
                 <div class="form-section1">
                     <label for="fecha">Fecha</label>
-                    <input class="block" id="fecha" type="date">
+                    <input class="block" id="fecha" type="date" name="fecha" value="<?php echo $servicio->fecha; ?>">
                 </div>
                 
             </div>
