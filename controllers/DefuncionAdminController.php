@@ -6,18 +6,18 @@ use Model\Servicio;
 use Model\Usuario;
 use MVC\Router;
 
-class DefuncionController
+class DefuncionAdminController
 {
     public static function index(Router $router)
     {
         session_start();
 
-        isAuth();
+        isAdmin();       
         
         $servicio = Servicio::all();
         
 
-        $router->render('panel/defunciones', [
+        $router->render('panel/defuncionesAdmin', [
             'servicio' => $servicio
             
         ]);
@@ -26,7 +26,7 @@ class DefuncionController
     public static function actualizar(Router $router)
     {
         session_start();
-        isAuth();
+        isAdmin();
 
         if (!is_numeric($_GET['id'])) return;
         $servicio = Servicio::find($_GET['id']);
@@ -220,10 +220,10 @@ class DefuncionController
 
                 $servicio->guardar();
 
-                header('Location: /def');
+                header('Location: /defu');
             }
         }
-        $router->render('servicio/actualizar', [
+        $router->render('servicio/actualizarAdmin', [
             'servicio' => $servicio
         ]);
     }
@@ -232,7 +232,7 @@ class DefuncionController
     {
         session_start();
 
-        isAuth();
+        isAdmin();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['id'];
@@ -244,7 +244,7 @@ class DefuncionController
                 $resultado = $servicio->guardar();
 
                 if ($resultado) {
-                    header('Location: /def');
+                    header('Location: /defu');
                 } else {
                     echo "Hubo un error al cambiar el estado.";
                 }

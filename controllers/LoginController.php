@@ -9,7 +9,7 @@ use MVC\Router;
 class LoginController {
     public static function login(Router $router) {
         $alertas = [];
-
+        
         $auth = new Usuario;
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -25,6 +25,7 @@ class LoginController {
                    if($usuario->comprobarPasswordAndVerificado($auth->password)) {
                         // autenticar el usuario
                         session_start();
+                        
 
                         $_SESSION['id'] = $usuario->id;
                         $_SESSION['nombre'] = $usuario->nombre . " " . $usuario->apellido;
@@ -35,10 +36,12 @@ class LoginController {
 
                         if($usuario->admin === "1") {
                             $_SESSION['admin'] = $usuario->admin ?? null;
-                            header('Location: /panel');
-                        } else {
                             header('Location: /qwerty');
+                        } else {
+                            header('Location: /panel');
                         }
+
+                        
                    }
                 } else {
                     Usuario::setAlerta('error', 'Usuario no encontrado');

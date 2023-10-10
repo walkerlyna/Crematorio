@@ -1,4 +1,4 @@
-<?php include_once __DIR__ . '/../templates/nav.php'; ?>
+<?php include_once __DIR__ . '/../templates/nav2.php'; ?>
 
 <div class="nav2">
     <div class="contenedor flex">
@@ -229,9 +229,17 @@
                         <td><strong><?php echo $servicio->id ?></strong></td>
                         <td class="acc clearfix"> <!-- Nueva celda para acciones -->
                             <div class="tabla-flex">
-                                <a class="open-modal" href="/api/actualizar?id=<?php echo $servicio->id; ?>&modal=true">
+                                <a class="open-modal" href="/api/actualizarr?id=<?php echo $servicio->id; ?>&modal=true">
                                     <i class="material-icons" style="font-size: 27px; color: black; float: left;">mode_edit</i>
                                 </a>
+                                
+                                    <form action="/servicio/eliminarr" method="POST">
+                                        <input type="hidden" name="id" value="<?php echo $servicio->id; ?>">
+                                        <button class="icono-delete boton" type="submit" style="float: right;">
+                                            <i class="material-icons" style="font-size: 27px;">delete</i>
+                                        </button>
+                                    </form>
+                                
                             </div>
                         </td>
                         <td><?php echo $servicio->cliente ?></td>

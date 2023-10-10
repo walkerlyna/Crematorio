@@ -8,7 +8,7 @@ use Model\Productos;
 use Model\Productos2;
 use MVC\Router;
 
-class FacturaController {
+class FacturaAdminController {
     public static function index(Router $router) {
         session_start();
 
@@ -20,7 +20,7 @@ class FacturaController {
         $pesos = Pesos::all();
         $pesos2 = Pesos2::all();
 
-        $router->render('panel/facturas', [
+        $router->render('panel/facturasAdmin', [
             'productos' => $productos,
             'productos2' => $productos2,
             'pesos' => $pesos,

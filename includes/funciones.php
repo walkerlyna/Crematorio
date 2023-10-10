@@ -34,3 +34,4 @@ function isAdmin() : void {
         header('Location: /');
     }
 }
+

@@ -9,9 +9,12 @@ use Controllers\ArchivosController;
 use Controllers\AutorizacionController;
 use Controllers\CedulaController;
 use Controllers\CitaController;
+use Controllers\DefuncionAdminController;
 use Controllers\DefuncionController;
+use Controllers\FacturaAdminController;
 use Controllers\FacturaController;
 use Controllers\LoginController;
+use Controllers\PanelAdminController;
 use Controllers\PanelController;
 use Controllers\PDFController;
 use Controllers\ProductoController;
@@ -39,21 +42,21 @@ $router->get('/confirmar-cuenta', [LoginController::class, 'confirmar']);
 $router->get('/mensaje', [LoginController::class, 'mensaje']);
 
 // AREA PRIVADA
-$router->get('/qwerty', [PanelController::class]);
+$router->get('/qwerty', [PanelAdminController::class, 'index']);
+$router->get('/defu', [DefuncionAdminController::class, 'index']);
 
 
 // PANEL
 $router->get('/panel', [PanelController::class, 'index']);
 $router->get('/def', [DefuncionController::class, 'index']);
-$router->get('/inventario', [DefuncionController::class, 'index']);
+$router->get('/inventario', [InventarioController::class, 'index']);
 
+$router->get('/facturass', [FacturaAdminController::class, 'index']);
 $router->get('/facturas', [FacturaController::class, 'index']);
 
-
-
+// API 
 $router->get('/api/actualizar', [DefuncionController::class, 'actualizar']);
 $router->post('/api/actualizar', [DefuncionController::class, 'actualizar']);
-// API 
 $router->post('/api/servicios', [APIController::class, 'guardar']);
 $router->get('/autocomplete', [APIController::class, 'autocomplete']);
 $router->post('/autocomplete', [APIController::class, 'autocomplete']);
@@ -62,8 +65,9 @@ $router->post('/autocomplete', [APIController::class, 'autocomplete']);
 $router->post('/generar/pdf', [PDFController::class, 'index']);
 
 
-
-$router->post('/servicio/eliminar', [DefuncionController::class, 'cambiarEstado']);
+$router->get('/api/actualizarr', [DefuncionAdminController::class, 'actualizar']);
+$router->post('/api/actualizarr', [DefuncionAdminController::class, 'actualizar']);
+$router->post('/servicio/eliminarr', [DefuncionAdminController::class, 'cambiarEstado']);
 
 
 //subida de archivos

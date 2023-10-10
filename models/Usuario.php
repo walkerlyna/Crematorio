@@ -17,6 +17,7 @@ class Usuario extends ActiveRecord {
     public $confirmado;
     public $token;
     
+    
 
     public function __construct($args = []) {
         $this->id = $args['id'] ?? null;
@@ -28,6 +29,7 @@ class Usuario extends ActiveRecord {
         $this->admin = $args['admin'] ?? 0;
         $this->confirmado = $args['confirmado'] ?? 0;
         $this->token = $args['token'] ?? '';
+        
         
     }                           
 

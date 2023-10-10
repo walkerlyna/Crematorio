@@ -2,15 +2,16 @@
 
 namespace Controllers;
 
+use Model\Servicio;
 use MVC\Router;
 
-class PanelController {
+class PanelAdminController {
     public static function index(Router $router) {
         session_start();
 
-        isAuth();
+        isAdmin();
 
-        $router->render('panel/index', [
+        $router->render('panel/indexAdmin', [
             'nombre' => $_SESSION['nombre']
         ]); 
     }

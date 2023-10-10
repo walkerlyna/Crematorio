@@ -2,16 +2,18 @@
 
 namespace Controllers;
 
+
 use MVC\Router;
 
-class PanelController {
+class InventarioController {
     public static function index(Router $router) {
         session_start();
 
         isAuth();
 
-        $router->render('panel/index', [
-            'nombre' => $_SESSION['nombre']
-        ]); 
+
+        $router->render('panel/defunciones', [
+            
+        ]);
     }
 }
