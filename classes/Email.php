@@ -32,7 +32,7 @@ class Email
         $mail->Password = $_ENV['EMAIL_PASSWORD'];
 
         $mail->setFrom('arturocondobleo@correo.com', 'Distribuidora Veterinaria Mar de Cortez');
-        $mail->addAddress('luis_sotoo45@hotmail.com', 'Luis Soto');
+        $mail->addAddress($this->nombre, 'Luis Soto');
         $mail->Subject = 'Confirma tu cuenta';
 
         // set HTML
@@ -77,7 +77,7 @@ class Email
         $contenido .= "</html>";
         $mail->Body = $contenido;
 
-        // enviar el mail
+        
         $mail->send();
     }
 }
