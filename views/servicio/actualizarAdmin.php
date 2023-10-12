@@ -203,6 +203,6 @@
 
 <?php
 $script = "
-        <script src ='/build/js/actualizar.js'></script>
+        <script src ='/build/js/actualizar2.js'></script>
     ";
 ?>

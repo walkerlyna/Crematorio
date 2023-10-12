@@ -31,8 +31,8 @@ class Email
         $mail->Username = $_ENV['EMAIL_USER'];
         $mail->Password = $_ENV['EMAIL_PASSWORD'];
 
-        $mail->setFrom('arturocondobleo@correo.com', 'Distribuidora Veterinaria Mar de Cortez');
-        $mail->addAddress($this->nombre, 'Luis Soto');
+        $mail->setFrom('siemprejuntoscrematorio@gmail.com', 'Siempre Juntos');
+        $mail->addAddress($this->email, 'Luis Soto');
         $mail->Subject = 'Confirma tu cuenta';
 
         // set HTML
@@ -40,10 +40,13 @@ class Email
         $mail->CharSet = 'UTF-8';
 
         $contenido = '<html>';
-        $contenido .= '<p><strong>Hola ' . $this->nombre . '</strong> Has creado tu cuenta en Distribuidora Veterinaria Mar de Cortez, solo debes confirmarla presionando el siguiente enlace</p>';
-        $contenido .= "<p>Presiona aquí: <a href='". $_ENV['CREMATORIO_URL'] ."/confirmar-cuenta?token=" . $this->token . "'>Confirmar cuenta</a> </p>";
-        $contenido .= "<p>Si tu no solicitaste esta cuenta, puedes ignorar el mensaje</p>";
-        $contenido .= "</html>";
+        $contenido .= '<body>';
+        $contenido .= '<p><strong>Hola ' . $this->nombre . ',</strong></p>';
+        $contenido .= '<p>Has creado tu cuenta en Siempre Juntos. Para confirmarla, por favor haz clic en el siguiente enlace:</p>';
+        $contenido .= '<p><a href="' . $_ENV['CREMATORIO_URL'] . '/confirmar-cuenta?token=' . $this->token . '">Confirmar cuenta</a></p>';
+        $contenido .= '<p>Si no solicitaste esta cuenta, puedes ignorar este mensaje.</p>';
+        $contenido .= '</body>';
+        $contenido .= '</html>';
         $mail->Body = $contenido;
 
         // enviar el mail
@@ -62,19 +65,21 @@ class Email
         $mail->Username = $_ENV['EMAIL_USER'];
         $mail->Password = $_ENV['EMAIL_PASSWORD'];
 
-        $mail->setFrom('arturocondobleo@correo.com', 'Distribuidora Veterinaria Mar de Cortez');
-        $mail->addAddress('luis_sotoo45@hotmail.com', 'Luis Soto');
-        $mail->Subject = 'Reestablece tu contraseña';
+        $mail->setFrom('siemprejuntoscrematorio@gmail.com', 'Siempre Juntos');
+        $mail->addAddress($this->email, 'Luis Soto');
+        $mail->Subject = 'Reestablecer contraseña';
 
         // set HTML
         $mail->isHTML(TRUE);
         $mail->CharSet = 'UTF-8';
 
         $contenido = '<html>';
+        $contenido .= '<body>';
         $contenido .= '<p><strong>Hola ' . $this->nombre . '</strong> Has solicitado reestablecer tu contraseña, presiona el siguiente enlace para realizarlo.</p>';
-        $contenido .= "<p>Presiona aquí: <a href='". $_ENV['CREMATORIO_URL'] ."/recuperar?token=" . $this->token . "'>Reestablecer contraseña</a> </p>";
-        $contenido .= "<p>Si tu no solicitaste este cambio, puedes ignorar el mensaje</p>";
-        $contenido .= "</html>";
+        $contenido .= '<p>Presiona aquí: <a href="'. $_ENV['CREMATORIO_URL'] .'/recuperar?token=' . $this->token . '">Reestablecer contraseña</a> </p>';
+        $contenido .= '<p>Si tu no solicitaste este cambio, puedes ignorar el mensaje</p>';
+        $contenido .= '</body>';
+        $contenido .= '</html>';
         $mail->Body = $contenido;
 
         

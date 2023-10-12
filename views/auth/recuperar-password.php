@@ -1,21 +1,26 @@
-<h1 class="nombre-pagina">Recuperar contraseña</h1>
-<p class="descripcion-pagina">Coloca tu nueva contraseña a continuación</p>
+<?php if ($error) return; ?>
 
-<?php
-    include_once __DIR__ . "/../templates/alertas.php"
-?>
+<div class="centrar-menu-login">
+    <main class="menu-login">
 
-<?php if($error) return; ?>
 
-<form method="POST" class="formulario">
-    <div class="campo">
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" name="password" placeholder="Tu nueva contraseña">
-    </div>
-    <input type="submit" class="boton" value="Guardar cambios">
-</form>
+        <section class="menu-login-izquierdo">
+            <div class="menu-login-izquierdo-imagen"></div>
+        </section>
 
-<div class="acciones">
-    <a href="/">¿Ya tienes una cuenta? Inicia Sesión</a>
-    <a href="/crear-cuenta">¿Aún no tienes cuenta? Crear una</a>
+        <section class="menu-login-derecho">
+            <h1>Recuperar contraseña</h1>
+            <p>Coloca tu nueva contraseña a continuación</p>
+            <form method="POST" class="formulario">
+                <?php
+                include_once __DIR__ . "/../templates/alertas.php"
+                ?>
+                <div class="campo">
+                    <input class="inputLogin" type="password" id="password" name="password" placeholder="Nueva contraseña">
+                </div>
+                <input type="submit" class="boton" value="Guardar cambios">
+            </form>
+
+        </section>
+    </main>
 </div>

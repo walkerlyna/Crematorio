@@ -1,7 +1,3 @@
-<?php
-include_once __DIR__ . "/../templates/alertas.php"
-?>
-
 <div class="centrar-menu-login">
     <main class="menu-login">
 
@@ -18,15 +14,18 @@ include_once __DIR__ . "/../templates/alertas.php"
                 <div class="campo-input">
                     <div class="campo">
                         <div class="campo-imagen"></div>
-                        
+
                         <input class="inputLogin" type="email" id="email" placeholder="Correo electrónico" name="email" value="<?php echo s($auth->email); ?>">
                     </div>
 
                     <div class="campo">
-                        
+
                         <input class="inputLogin" type="password" id="password" placeholder="Contraseña" name="password">
                     </div>
                 </div>
+                <?php
+                include_once __DIR__ . "/../templates/alertas.php"
+                ?>
                 <input type="submit" class="boton" value="Iniciar Sesión">
             </form>
 

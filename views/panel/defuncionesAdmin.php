@@ -14,21 +14,26 @@
 
 <main class="tabla bienvenida">
     <div class="nav-tabla">
-        <button class="boton" id="abrirModal">
-            <span class="material-symbols-outlined">
-                add
-            </span>
-        </button>
-        <button class="boton">
-            <span class="material-symbols-outlined">
-                delete
-            </span>
-        </button>
-        <button class="boton" id="imprimir">
-            <span class="material-symbols-outlined">
-                print
-            </span>
-        </button>
+        <div class="tabla-botones">
+            <button class="boton" id="abrirModal">
+                <span class="material-symbols-outlined">
+                    add
+                </span>
+            </button>
+            <button class="boton">
+                <span class="material-symbols-outlined">
+                    delete
+                </span>
+            </button>
+            <button class="boton" id="imprimir">
+                <span class="material-symbols-outlined">
+                    print
+                </span>
+            </button>
+        </div>
+        <div>
+            <a href="/allServices">Ver todos los servicios</a>
+        </div>
     </div>
 
     <form class="modal" id="miModal">
@@ -232,14 +237,14 @@
                                 <a class="open-modal" href="/api/actualizarr?id=<?php echo $servicio->id; ?>&modal=true">
                                     <i class="material-icons" style="font-size: 27px; color: black; float: left;">mode_edit</i>
                                 </a>
-                                
-                                    <form action="/servicio/eliminarr" method="POST">
-                                        <input type="hidden" name="id" value="<?php echo $servicio->id; ?>">
-                                        <button class="icono-delete boton" type="submit" style="float: right;">
-                                            <i class="material-icons" style="font-size: 27px;">delete</i>
-                                        </button>
-                                    </form>
-                                
+
+                                <form action="/servicio/eliminarr" method="POST">
+                                    <input type="hidden" name="id" value="<?php echo $servicio->id; ?>">
+                                    <button class="icono-delete boton" type="submit" style="float: right;">
+                                        <img class="img-ocultar" src="../build/img/hidden.png" alt="Ocultar">
+                                    </button>
+                                </form>
+
                             </div>
                         </td>
                         <td><?php echo $servicio->cliente ?></td>
@@ -364,28 +369,6 @@
 <?php
 $script = "
         <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
-        <script src ='/build/js/app.js'></script>
+        <script src ='/build/js/app2.js'></script>
     ";
 ?>
-
-Subir foto de
-
-Hoja de autorización ✔️
-
-Evidencia del perro en foto y video - ✔️
-
-Certificado y documentos finales ✔️
-
-Remisión ✔️
-
-Recibo de pago o comprobante de pago ✔️
-
-
-
-Joel Arturo: Y alguna forma de que
-Joel Arturo: Si suben un documento o foto o algo ese quede
-Joel Arturo: Y que se puedan borrar pero que si se borra escriban el motivo por el cual se borro
-
-INFORMACION MASCOTA CHECKLIST EVIDENCIA INDIVIDUAL DE CREMACIÓN
-
-agregar urna

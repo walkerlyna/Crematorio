@@ -12,16 +12,30 @@ class DefuncionAdminController
     {
         session_start();
 
-        isAdmin();       
-        
+        isAdmin();
+
         $servicio = Servicio::all();
-        
+
 
         $router->render('panel/defuncionesAdmin', [
             'servicio' => $servicio
-            
+
         ]);
     }
+
+    public static function allServices(Router $router)
+    {
+        session_start();
+
+        isAdmin();
+
+        $servicio = Servicio::all();
+
+        $router->render('panel/allServices', [
+            'servicio' => $servicio
+        ]);
+    }
+
 
     public static function actualizar(Router $router)
     {
@@ -52,7 +66,7 @@ class DefuncionAdminController
                     $directorioFecha = $directorioBase;
 
                     // Elimina el archivo existente si existe
-                   
+
 
                     // Obtén la fecha actual en el formato deseado (por ejemplo, "YYYY-MM-DD")
 
@@ -85,7 +99,7 @@ class DefuncionAdminController
                     $directorioFecha = $directorioBase;
 
                     // Elimina el archivo existente si existe
-                    
+
 
                     // Obtén la fecha actual en el formato deseado (por ejemplo, "YYYY-MM-DD")
 

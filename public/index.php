@@ -44,6 +44,7 @@ $router->get('/mensaje', [LoginController::class, 'mensaje']);
 // AREA PRIVADA
 $router->get('/qwerty', [PanelAdminController::class, 'index']);
 $router->get('/defu', [DefuncionAdminController::class, 'index']);
+$router->get('/allServices', [DefuncionAdminController::class, 'allServices']);
 
 
 // PANEL
