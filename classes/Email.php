@@ -29,10 +29,10 @@ class Email
         $mail->SMTPAuth = true;
         $mail->Port = $_ENV['EMAIL_PORT'];
         $mail->Username = $_ENV['EMAIL_USER'];
-        $mail->Password = $_ENV['EMAIL_PASSWORD'];
+        $mail->Password = $_ENV['EMAIL_PASS'];
 
         $mail->setFrom('siemprejuntoscrematorio@gmail.com', 'Siempre Juntos');
-        $mail->addAddress($this->email, 'Luis Soto');
+        $mail->addAddress($this->email, $this->nombre);
         $mail->Subject = 'Confirma tu cuenta';
 
         // set HTML
@@ -66,7 +66,7 @@ class Email
         $mail->Password = $_ENV['EMAIL_PASSWORD'];
 
         $mail->setFrom('siemprejuntoscrematorio@gmail.com', 'Siempre Juntos');
-        $mail->addAddress($this->email, 'Luis Soto');
+        $mail->addAddress($this->email, $this->nombre);
         $mail->Subject = 'Reestablecer contraseña';
 
         // set HTML

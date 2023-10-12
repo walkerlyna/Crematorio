@@ -36,7 +36,7 @@ class PDFController
         $pdf->SetFont('Arial', 'B', 12);
 
         // LOGO
-        $pdf->Image('../src/img/siemprejuntos.jpg', -10, -10, 120, 67);
+        $pdf->Image('./build/img/siemprejuntos.jpg', -10, -10, 120, 67);
 
         // Título de la factura
         $pdf->Cell(110, 10, '', 0, 0);
