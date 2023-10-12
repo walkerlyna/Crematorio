@@ -2,7 +2,7 @@
     <nav class="enlaces contenedor">
         <a href="/qwerty">Inicio</a>
         <a href="/defu">Defunciones</a>
-        <a href="/facturas">Remisiones</a>
+        <a href="/facturass">Remisiones</a>
         <a href="/inventario">Inventario</a>
     </nav>
 

@@ -1,0 +1,96 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+
+
+
+.centrar-menu-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to right, #C18FC6, #519AB7);
+
+    .menu-login {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        form {
+            margin-bottom: 10px;
+            border-radius: 10px;
+            width: 100%;
+        }
+
+        .menu-login-izquierdo-imagen {
+            background-image: url(../img/siemprejuntos.svg);
+            width: 500px;
+            height: 500px;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .menu-login-derecho {
+            padding: 2rem;
+
+            h1 {
+                margin-bottom: 2.7rem;
+                text-align: center;
+            }
+
+            p {
+                margin-top: 0;
+                font-size: 16px;
+                text-align: center;
+            }
+
+            .formulario {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 4rem;
+
+                .boton {
+                    border-radius: 2rem;
+                }
+
+                .inputLogin {
+                    width: 100%;
+                    border-radius: 2rem;
+                    outline: 1px solid #c4c4c7;
+                    background-color: white;
+
+                    &:focus {
+                        outline: 1px solid #519AB7;
+                        box-shadow: 0 0 4px #3498db;
+                    }
+                }
+
+                .campo-input {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+
+                    .campo-imagen {
+                        background-image: url();
+                        width: 20px;
+                        height: 20px;
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position: center center;
+                    }
+                }
+            }
+
+            .acciones {
+                display: flex;
+                justify-content: space-between;
+                gap: 3rem;
+            }
+        }
+    }
+}
+

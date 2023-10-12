@@ -1,0 +1,43 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0.4rem;
+
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        padding: 1.3rem 2.2rem;
+    }
+}
+
+
+.perfil:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    color: v.$negro;
+}
+
+.dropdown-menu li:hover {
+    background-color: rgba(244, 244, 244, 0.9);
+
+    a {
+        color: v.$perfect;
+    }
+    
+}
+

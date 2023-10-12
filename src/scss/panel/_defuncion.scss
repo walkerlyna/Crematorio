@@ -1,0 +1,534 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.tabla {
+
+
+    .nav-tabla {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid v.$gris;
+
+        .tabla-botones {
+            display: flex;
+            gap: 1rem;
+        }
+    }
+
+    .boton {
+        background: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border: 1px solid v.$gris;
+        border-radius: 0.5rem;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        &:active {
+            transform: scale(1.05);
+        }
+    }
+}
+
+.tabla-principal {
+    font-size: 1.4rem;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+
+    th,
+    td {
+        border-bottom: 1px solid #dddddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    tr:last-child {
+        border-bottom: 2px solid #dddddd;
+    }
+
+    thead th {
+        font-weight: 600;
+        color: #5f6b77;
+
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+
+
+    .modal-contenido {
+        background-color: white;
+        max-width: 1100px;
+        margin: 5% auto;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        border-radius: 0.3rem;
+
+
+    }
+
+    .cerrar-modal {
+
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .title {
+        border-bottom: 1px solid v.$gris;
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .form-body {
+        padding: 2rem 4rem;
+    }
+
+}
+
+.form-section1 {
+    display: inline-block;
+    margin: 5px;
+
+
+    .block {
+        display: block;
+    }
+}
+
+.navModal {
+    padding: 1rem 4rem;
+    display: flex;
+    gap: 2rem;
+
+
+}
+
+
+
+
+
+.navModal a {
+    color: #5f6b77;
+    text-decoration: none;
+
+    padding: 5px;
+    transition: color 0.3s;
+    border: 1px solid white;
+}
+
+.navModal a:hover {
+    border: 1px solid #007bff;
+    border-radius: 14px;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.navModal a.active,
+.navModal a:focus,
+.navModal a:active {
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border: 1px solid #007bff;
+    border-radius: 14px;
+
+}
+
+/* Cambia el color del borde cuando se enfoca */
+
+
+
+/* Estilos para el botón de guardar */
+#guardarBtn {
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Cambio de estilo al pasar el cursor sobre el área de arrastre */
+.drop-area:hover {
+    background-color: #e0e0e0;
+}
+
+
+
+#cliente {
+    position: relative;
+    /* Asegura que el div de sugerencias esté posicionado correctamente */
+}
+
+#suggestions {
+    position: absolute;
+    display: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    z-index: 1000;
+    width: 270px;
+    overflow-y: auto;
+    cursor: pointer;
+    border-radius: 4px;
+    /* Asegura que el div de sugerencias tenga el mismo ancho que el input */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    /* Agrega una sombra suave */
+}
+
+.suggestions>div {
+    /* Establece un borde inferior para cada sugerencia, excepto la última */
+    border-bottom: 1px solid #ccc;
+    /* Puedes ajustar el estilo y color del borde */
+    padding: 7px 12px;
+    /* Agrega un espacio interno para las sugerencias */
+
+    &:hover {
+        background-color: #e6e6e6;
+        border-radius: 2px;
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+#drop-area {
+    width: 300px;
+    height: 200px;
+    border: 2px dashed #ccc;
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+}
+
+
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+input[type="submit"] {
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+.seleccionada {
+    background-color: #c0c0c0;
+}
+
+.pendiente {
+    color: orange;
+    background-color: red;
+    border-radius: 0.7rem;
+    font-weight: bold;
+}
+
+.confirmado {
+    color: green;
+
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    padding: 1.7rem;
+    border-top: 1px solid #e7e8e9;
+
+    .boton2 {
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 4px;
+        background-color: #5f6b77;
+        color: v.$blanco;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: darken($color: #5f6b77, $amount: 10%);
+        }
+    }
+}
+
+#archivo,
+#archivo2,
+#archivo3,
+#archivo4,
+#archivo5,
+#archivo7 {
+    display: none;
+}
+
+.label-archivo {
+    height: 400px;
+    max-width: 550px;
+    border-radius: 7px;
+    margin: 0 auto;
+    border: 7px dashed #999;
+    cursor: pointer;
+}
+
+.imagen1 {
+    background: url(../img/authorize.png);
+    background-size: 20%;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    &:hover {
+        border: 7px dashed #2980b9;
+        background: url(../img/authorize.png);
+        background-size: 20%;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+}
+
+.imagen2 {
+    background: url(../img/archivofoto.png);
+    background-size: 20%;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    &:hover {
+        border: 7px dashed #2980b9;
+        background: url(../img/archivofoto2.png);
+        background-size: 20%;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+}
+
+.imagen3 {
+    background: url(../img/certificate.png);
+    background-size: 20%;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    &:hover {
+        border: 7px dashed #2980b9;
+        background: url(../img/certificate.png);
+        background-size: 20%;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+}
+
+.imagen4 {
+    background: url(../img/movie.png);
+    background-size: 20%;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    &:hover {
+        border: 7px dashed #2980b9;
+        background: url(../img/movie.png);
+        background-size: 20%;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+}
+
+.imagen5 {
+    background: url(../img/pay.png);
+    background-size: 20%;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    &:hover {
+        border: 7px dashed #2980b9;
+        background: url(../img/pay.png);
+        background-size: 20%;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+}
+
+.imagen6 {
+    background: url(../img/comprobante.png);
+    background-size: 20%;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    &:hover {
+        border: 7px dashed #2980b9;
+        background: url(../img/comprobante.png);
+        background-size: 20%;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+}
+
+
+
+.seleccionable {
+
+    a {
+        color: white;
+        padding: 0.4rem;
+        border-radius: 6px;
+        background-color: rgb(12, 77, 12);
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .open-modal {
+        padding: 0;
+    }
+}
+
+.seleccionable {
+
+    .boton {
+        padding: 0;
+        margin-bottom: 0;
+        border: none;
+    }
+}
+
+.tabla-flex {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    a {
+        background-color: unset;
+    }
+}
+
+.seccion-autorizacion,
+.seccion-evidencia,
+.seccion-certificado,
+.seccion-video,
+.seccion-comprobante,
+.seccion-remisiones {
+    margin: 1.5rem 0;
+}
+
+select {
+    padding: 5px;
+    /* Espaciado interno */
+    border: 1px solid #ccc;
+    /* Borde */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    width: 100%;
+    /* Ancho completo */
+    cursor: pointer;
+}
+
+/* Estilo para la opción predeterminada (placeholder) */
+select option[disabled]:first-child {
+    color: #aaa;
+    /* Color de texto gris */
+}
+
+/* Estilo para las opciones normales */
+select option {
+    color: #333;
+    /* Color de texto normal */
+    background-color: #fff;
+    /* Fondo blanco */
+
+}
+
+/* Estilo cuando se enfoca (activo) */
+select:focus {
+    border-color: #007bff;
+    /* Cambia el color del borde cuando se enfoca */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    /* Sombra suave cuando se enfoca */
+
+}
+
+
+
+textarea {
+    margin: 2rem auto;
+    display: block;
+    width: 90%;
+    /* Ancho completo */
+    padding: 10px;
+    /* Espaciado interno */
+    border: 1px solid #ccc;
+    /* Borde */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    resize: vertical;
+    /* Permite redimensionar verticalmente */
+
+}
+
+/* Estilos cuando el textarea está enfocado (activo) */
+textarea:focus {
+    border-color: #007bff;
+    /* Cambia el color del borde cuando se enfoca */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    /* Sombra suave cuando se enfoca */
+}
+
+@media (max-width: 1100px) {
+    .navModal {
+        flex-direction: column;
+    }
+
+    .form-section1 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal {
+        .modal-contenido {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+    }
+}
+
+
+
+.img-ocultar {
+    width: 27px;
+}

@@ -13,24 +13,26 @@
 </div>
 
 <main class="tabla bienvenida">
-    <div class="nav-tabla">
-        <button class="boton" id="abrirModal">
-            <span class="material-symbols-outlined">
-                add
-            </span>
-        </button>
-        <button class="boton">
-            <span class="material-symbols-outlined">
-                delete
-            </span>
-        </button>
-        <button class="boton" id="imprimir">
-            <span class="material-symbols-outlined">
-                print
-            </span>
-        </button>
+<div class="nav-tabla">
+        <div class="tabla-botones">
+            <button class="boton" id="abrirModal">
+                <span class="material-symbols-outlined">
+                    add
+                </span>
+            </button>
+            <button class="boton">
+                <span class="material-symbols-outlined">
+                    delete
+                </span>
+            </button>
+            <button class="boton" id="imprimir">
+                <span class="material-symbols-outlined">
+                    print
+                </span>
+            </button>
+        </div>
         <div>
-            <a href="#">Ver todos los servicios</a>
+            <a href="/allServices">Ver todos los servicios</a>
         </div>
     </div>
 

@@ -1,5 +1,6 @@
 node_modules/
 vendor/
 .env
-/src
+/src/img
+/src/js
 .DS_Store

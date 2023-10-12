@@ -1,0 +1,78 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.header {
+    padding: 1rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid v.$gris;
+    background-color: v.$blanco;
+
+    .enlaces {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+
+
+        a {
+            color: black;
+            transition: transform 0.1s, opacity 0.2s;
+        }
+
+        a:hover {
+            color: v.$perfect;
+            transform: scale(1.1);
+            /* Escala ligeramente el enlace en hover */
+            opacity: 0.9;
+        }
+    }
+
+    .perfil {
+        display: flex;
+        align-items: center;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+
+}
+
+.icono-perfil {
+    font-size: 50px;
+}
+
+.pg {
+    width: 50px;
+    height: 50px;
+    background-image: url(../img/siemprejuntos.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.nav2 {
+    padding: 0.5rem 0;
+    background-color: v.$blanco;
+
+    .flex {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+
+    p {
+        color: #5f6b77;
+    }
+}
+
+.bienvenida {
+    background-color: v.$blanco;
+    padding: 3rem;
+    margin: 3rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
