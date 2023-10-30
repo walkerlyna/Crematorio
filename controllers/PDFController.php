@@ -103,7 +103,8 @@ class PDFController
                 $IVA = ($precioSinIVA * 0.16) * $cantidad;
                 $IVA = number_format($IVA, 2);
                 $import = $precioSinIVA * $cantidad;
-                
+
+
 
                 $pdf->Cell(15, 5, $cantidad, 1, 0, 'C');
                 $pdf->Cell(70, 5, mb_convert_encoding($peso->descripcion, 'ISO-8859-1'), 1, 0, 'C');
@@ -132,7 +133,7 @@ class PDFController
                 $IVA = ($precioSinIVA * 0.16) * $cantidad;
                 $IVA = number_format($IVA, 2);
                 $import = $precioSinIVA * $cantidad;
-                
+
 
                 $pdf->Cell(15, 5, $cantidad, 1, 0, 'C');
                 $pdf->Cell(70, 5, mb_convert_encoding($peso2->descripcion, 'ISO-8859-1'), 1, 0, 'C');
@@ -154,14 +155,14 @@ class PDFController
             $cantidadKey = 'cantidad_' . $productoId;
             $cantidad = isset($_POST[$cantidadKey]) ? intval($_POST[$cantidadKey]) : 1;
             $producto = Productos::find($productoId); // Suponiendo que existe un método "find" en el modelo Productos
-        
+
             if ($producto) {
                 $precioSeleccionado = ($_POST['tipo-precio'] === 'publico') ? $producto->precioPublico : $producto->precio;
                 $precioSinIVA = $precioSeleccionado / 1.16;
                 $IVA = ($precioSinIVA * 0.16) * $cantidad;
                 $IVA = number_format($IVA, 2);
                 $import = $precioSinIVA * $cantidad;
-        
+
                 $pdf->Cell(15, 5, $cantidad, 1, 0, 'C');
                 $pdf->Cell(70, 5, mb_convert_encoding($producto->descripcion, 'ISO-8859-1'), 1, 0, 'C');
                 $pdf->Cell(25, 5, ' | ', 1, 0, 'C');
@@ -170,7 +171,7 @@ class PDFController
                 $pdf->Cell(20, 5, '$0', 1, 0, 'C');
                 $pdf->Cell(20, 5, '$' . $IVA, 1, 0, 'C');
                 $pdf->Cell(30, 5, '$' . number_format($import, 2), 1, 1, 'C');
-        
+
                 $subtotal = $import;
                 $total += $subtotal;
                 $totalIVA += $IVA;
@@ -182,14 +183,14 @@ class PDFController
             $cantidadKey = 'cantidad_' . $productoId2;
             $cantidad = isset($_POST[$cantidadKey]) ? intval($_POST[$cantidadKey]) : 1;
             $producto2 = Productos2::find($productoId2); // Suponiendo que existe un método "find" en el modelo Productos
-        
+
             if ($producto2) {
                 $precioSeleccionado = ($_POST['tipo-precio'] === 'publico') ? $producto2->precioPublico : $producto2->precio;
                 $precioSinIVA = $precioSeleccionado / 1.16;
                 $IVA = ($precioSinIVA * 0.16) * $cantidad;
                 $IVA = number_format($IVA, 2);
                 $import = $precioSinIVA * $cantidad;
-        
+
                 $pdf->Cell(15, 5, $cantidad, 1, 0, 'C');
                 $pdf->Cell(70, 5, mb_convert_encoding($producto2->descripcion, 'ISO-8859-1'), 1, 0, 'C');
                 $pdf->Cell(25, 5, ' | ', 1, 0, 'C');
@@ -198,16 +199,16 @@ class PDFController
                 $pdf->Cell(20, 5, '$0', 1, 0, 'C');
                 $pdf->Cell(20, 5, '$' . $IVA, 1, 0, 'C');
                 $pdf->Cell(30, 5, '$' . number_format($import, 2), 1, 1, 'C');
-        
+
                 $subtotal = $import;
                 $total += $subtotal;
                 $totalIVA += $IVA;
             }
         }
 
-        
-        
-        
+
+
+
         // Calcular el total con IVA
         $TOTALTOTAL = $total + $totalIVA;
 

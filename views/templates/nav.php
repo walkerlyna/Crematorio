@@ -4,6 +4,7 @@
         <a href="/def">Defunciones</a>
         <a href="/facturas">Remisiones</a>
         <a href="/inventario">Inventario</a>
+        <a href="/clientes">Clientes</a>
     </nav>
 
     <div class="perfil">

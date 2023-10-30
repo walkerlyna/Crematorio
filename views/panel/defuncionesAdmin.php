@@ -57,11 +57,6 @@
                 </div>
 
                 <div class="form-section1">
-                    <label for="rfc">RFC</label>
-                    <input class="block" id="rfc" type="text">
-                </div>
-
-                <div class="form-section1">
                     <label for="fecha">Fecha</label>
                     <input class="block" id="fecha" type="date">
                 </div>
@@ -109,6 +104,14 @@
                     <div class="form-section1">
                         <label for="peso_kg">Peso(kg)</label>
                         <input class="block" id="peso_kg" type="text">
+                    </div>
+                    <div class="form-section1">
+                        <label for="fechaNacimiento">Día de nacimiento</label>
+                        <input class="block" id="fechaNacimiento" type="date">
+                    </div>
+                    <div class="form-section1">
+                        <label for="fechaPartida">Día de partida</label>
+                        <input class="block" id="fechaPartida" type="date">
                     </div>
                 </div>
 
@@ -226,7 +229,7 @@
         <tbody>
             <?php
 
-            foreach ($servicio as $servicio) {
+            foreach (array_reverse($servicio) as $servicio) {
                 if ($servicio->estado == 0) {
                     // Verificar el valor de estado
             ?>
@@ -238,7 +241,7 @@
                                     <i class="material-icons" style="font-size: 27px; color: black; float: left;">mode_edit</i>
                                 </a>
 
-                                <form action="/servicio/eliminarr" method="POST">
+                                <form action="/servicio/ocultar" method="POST">
                                     <input type="hidden" name="id" value="<?php echo $servicio->id; ?>">
                                     <button class="icono-delete boton" type="submit" style="float: right;">
                                         <img class="img-ocultar" src="../build/img/hidden.png" alt="Ocultar">

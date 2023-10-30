@@ -267,4 +267,30 @@ class DefuncionAdminController
             }
         }
     }
+
+    public static function desocultar()
+    {
+        session_start();
+
+        isAdmin();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $nuevoEstado = 0; // Cambia esto al nuevo valor deseado
+
+            $servicio = Servicio::find($id);
+            if ($servicio) {
+                $servicio->estado = $nuevoEstado;
+                $resultado = $servicio->guardar();
+
+                if ($resultado) {
+                    header('Location: /allServices');
+                } else {
+                    echo "Hubo un error al cambiar el estado.";
+                }
+            } else {
+                echo "Servicio no encontrado.";
+            }
+        }
+    }
 }

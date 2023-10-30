@@ -66,11 +66,12 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
+    overflow-y: scroll;
 
 
     .modal-contenido {
         background-color: white;
-        max-width: 1100px;
+        max-width: 1200px;
         margin: 5% auto;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
         border-radius: 0.3rem;
@@ -531,3 +532,50 @@ textarea:focus {
 .img-ocultar {
     width: 27px;
 }
+
+.seleccionado {
+    background-color: v.$azul;
+    font-weight: v.$bold;
+  }
+  
+  .tabla-productos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+  
+    th, td {
+      padding: 9px 15px;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    th {
+      background-color: #013298;
+      color: #fff;
+    }
+  
+    td.precioP-producto, td.precioM-producto {
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+  
+  .tabla-productos {
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+ 
+  
+  .clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  .eliminarBoton {
+    background: transparent;
+    border: none;
+    width: 27px;
+    height: 27px;
+    cursor: pointer;
+  }

@@ -54,11 +54,6 @@
                 </div>
 
                 <div class="form-section1">
-                    <label for="rfc">RFC</label>
-                    <input class="block" id="rfc" type="text">
-                </div>
-
-                <div class="form-section1">
                     <label for="fecha">Fecha</label>
                     <input class="block" id="fecha" type="date">
                 </div>
@@ -106,6 +101,14 @@
                     <div class="form-section1">
                         <label for="peso_kg">Peso(kg)</label>
                         <input class="block" id="peso_kg" type="text">
+                    </div>
+                    <div class="form-section1">
+                        <label for="fechaNacimiento">Día de nacimiento</label>
+                        <input class="block" id="fechaNacimiento" type="date">
+                    </div>
+                    <div class="form-section1">
+                        <label for="fechaPartida">Día de partida</label>
+                        <input class="block" id="fechaPartida" type="date">
                     </div>
                 </div>
 
@@ -189,10 +192,6 @@
 
             </div>
 
-
-
-
-
             <footer class="footer">
                 <button class="boton2">Cancelar</button>
                 <button class="boton2" id="botonReservar">Guardar</button>
@@ -216,6 +215,7 @@
                 <th>Certificado</th>
                 <th>Remisión</th>
                 <th>Comprobante</th>
+                
 
 
 
@@ -223,7 +223,7 @@
         <tbody>
             <?php
 
-            foreach ($servicio as $servicio) {
+            foreach (array_reverse($servicio) as $servicio) {
                 if ($servicio->estado == 0) {
                     // Verificar el valor de estado
             ?>
@@ -342,6 +342,7 @@
                             }
                             ?>
                         </td>
+                        
 
                     </tr>
             <?php
@@ -361,3 +362,8 @@ $script = "
         <script src ='/build/js/app.js'></script>
     ";
 ?>
+
+// AGREGAR BOTON DE DESOCULTAR ✅
+// TABLA DE CLIENTES IGUAL QUE DEFUNCIONES
+// fecha de muerte de perro y nacimiento ✅
+// voltear los numeros de las defunciones ✅

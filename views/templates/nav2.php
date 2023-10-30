@@ -3,7 +3,7 @@
         <a href="/qwerty">Inicio</a>
         <a href="/defu">Defunciones</a>
         <a href="/facturass">Remisiones</a>
-        <a href="/inventario">Inventario</a>
+        <a href="/clientess">Clientes</a>
     </nav>
 
     <div class="perfil">

@@ -4,7 +4,8 @@
 
 namespace Controllers;
 
-
+use Model\Clientes;
+use Model\Productos;
 use Model\Servicio;
 use MVC\Router;
 
@@ -12,6 +13,8 @@ class APIController
 {
     public static function index()
     {
+        $productos = Productos::all();
+        echo json_encode($productos);
     }
 
     public static function guardar()
@@ -166,15 +169,10 @@ class APIController
                     $servicioData['comprobante'] = $nombreArchivo;
                 }
             }
-
-            
-            
-            
-
         }
         $servicio = new Servicio($servicioData);
-            $resultado = $servicio->guardar();
-            echo json_encode($resultado);
+        $resultado = $servicio->guardar();
+        echo json_encode($resultado);
     }
 
     public static function autocomplete(Router $router)
@@ -187,5 +185,11 @@ class APIController
             header('Content-Type: application/json');
             echo json_encode($clientes);
         }
+    }
+
+    public static function guardarClientes(Router $router) {
+        $clientes = new Clientes($_POST);
+        $resultado = $clientes->guardar();
+        echo json_encode($resultado);
     }
 }

@@ -5,7 +5,7 @@ namespace Model;
 class Servicio extends ActiveRecord {
     // Base de datos
     protected static $tabla = 'servicio';
-    protected static $columnasDB = ['id', 'fecha', 'nombre', 'motivo', 'especie', 'peso_kg', 'sexo', 'nombreDueño', 'numeroContacto', 'domicilio', 'cliente', 'autorizacion', 'evidencia', 'certificado', 'estado', 'pdf', 'rfc', 'video', 'remisiones', 'comprobante', 'observaciones'];
+    protected static $columnasDB = ['id', 'fecha', 'nombre', 'motivo', 'especie', 'peso_kg', 'sexo', 'nombreDueño', 'numeroContacto', 'domicilio', 'cliente', 'autorizacion', 'evidencia', 'certificado', 'estado', 'pdf', 'video', 'remisiones', 'comprobante', 'observaciones', 'fechaNacimiento', 'fechaPartida'];
 
     public $id;
     public $fecha;
@@ -23,17 +23,18 @@ class Servicio extends ActiveRecord {
     public $certificado;
     public $estado;
     public $pdf;
-    public $rfc;
     public $video;
     public $remisiones;
     public $comprobante;
     public $observaciones;
+    public $fechaNacimiento;
+    public $fechaPartida;
     
 
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;
-        $this->fecha = $args['fecha'] ?? '';
+        $this->fecha = $args['fecha'] ?? null;
         $this->nombre = $args['nombre'] ?? '';
         $this->motivo = $args['motivo'] ?? '';
         $this->especie = $args['especie'] ?? '';
@@ -48,11 +49,12 @@ class Servicio extends ActiveRecord {
         $this->certificado = $args['certificado'] ?? '';
         $this->estado = $args['estado'] ?? 0;
         $this->pdf = $args['pdf'] ?? '';
-        $this->rfc = $args['rfc'] ?? '';
         $this->video = $args['video'] ?? '';
         $this->remisiones = $args['remisiones'] ?? '';
         $this->comprobante = $args['comprobante'] ?? '';
         $this->observaciones = $args['observaciones'] ?? '';
+        $this->fechaNacimiento = $args['fechaNacimiento'] ?? '';
+        $this->fechaPartida = $args['fechaPartida'] ?? '';
     }
 
     public static function obtenerClientesAutocompletado($term) {

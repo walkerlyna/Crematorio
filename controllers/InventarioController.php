@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-
+use Model\Servicio;
 use MVC\Router;
 
 class InventarioController {
@@ -11,9 +11,11 @@ class InventarioController {
 
         isAuth();
 
+        $servicio = Servicio::all();
 
-        $router->render('panel/defunciones', [
-            
+        $router->render('panel/inventario', [
+            'servicio' => $servicio
         ]);
     }
 }
+

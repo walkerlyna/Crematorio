@@ -45,22 +45,17 @@
 
             <div class="form-body">
 
-            <div class="form-section1">
+                <div class="form-section1">
                     <label for="cliente">Cliente</label>
                     <input autocomplete="off" class="block" id="cliente" type="text" name="cliente" value="<?php echo $servicio->cliente; ?>">
                     <div id="suggestions" class="suggestions"></div>
                 </div>
 
                 <div class="form-section1">
-                    <label for="rfc">RFC</label>
-                    <input class="block" id="rfc" type="text" name="rfc" value="<?php echo $servicio->rfc; ?>">
-                </div>
-
-                <div class="form-section1">
                     <label for="fecha">Fecha</label>
                     <input class="block" id="fecha" type="date" name="fecha" value="<?php echo $servicio->fecha; ?>">
                 </div>
-                
+
             </div>
 
             <nav class="navModal">
@@ -91,19 +86,27 @@
                     </div>
                     <div class="form-section1">
                         <label for="especie">Especie</label>
-                        <input class="block" id="especie" type="text">
+                        <input class="block" id="especie" type="text" name="especie" value="<?php echo $servicio->especie; ?>">
                     </div>
                     <div class="form-section1">
                         <label for="sexo">Sexo</label>
                         <select class="block" id="sexo" name="sexo">
-                            <option class="textogris" value="" disabled hidden selected>Seleccionar..</option>
-                            <option value="macho">Macho</option>
-                            <option value="hembra">Hembra</option>
+                            <option class="textogris" value="" disabled hidden>Seleccionar..</option>
+                            <option value="macho" <?php if ($servicio->sexo == "macho") echo "selected"; ?>>Macho</option>
+                            <option value="hembra" <?php if ($servicio->sexo == "hembra") echo "selected"; ?>>Hembra</option>
                         </select>
                     </div>
                     <div class="form-section1">
                         <label for="peso_kg">Peso(kg)</label>
-                        <input class="block" id="peso_kg" type="text">
+                        <input class="block" id="peso_kg" type="text" name="peso_kg" value="<?php echo $servicio->peso_kg; ?>">
+                    </div>
+                    <div class="form-section1">
+                        <label for="fechaNacimiento">Día de nacimiento</label>
+                        <input class="block" id="fechaNacimiento" name="fechaNacimiento" type="date" value="<?php echo $servicio->fechaNacimiento; ?>">
+                    </div>
+                    <div class="form-section1">
+                        <label for="fechaPartida">Día de partida</label>
+                        <input class="block" id="fechaPartida" name="fechaPartida" type="date" value="<?php echo $servicio->fechaPartida; ?>">
                     </div>
                 </div>
 
@@ -114,16 +117,16 @@
                 <div class="form-body">
                     <div class="form-section1">
                         <label for="nombreDueño">Nombre del dueño</label>
-                        <input class="block" id="nombreDueño" type="text">
+                        <input class="block" id="nombreDueño" type="text" name="nombreDueño" value="<?php echo $servicio->nombreDueño; ?>">
                     </div>
 
                     <div class="form-section1">
                         <label for="numeroContacto">Número de contacto</label>
-                        <input class="block" id="numeroContacto" type="tel">
+                        <input class="block" id="numeroContacto" type="tel" name="numeroContacto" value="<?php echo $servicio->numeroContacto; ?>">
                     </div>
                     <div class="form-section1">
                         <label for="domicilio">Domicilio</label>
-                        <input class="block" id="domicilio" type="text">
+                        <input class="block" id="domicilio" type="text" name="domicilio" value="<?php echo $servicio->domicilio; ?>">
                     </div>
 
                 </div>
@@ -187,13 +190,13 @@
 
             <div class="seccion-observaciones" style="display: none;">
 
-                <textarea name="observaciones" id="observaciones" cols="30" rows="10"></textarea>
+                <textarea name="observaciones" id="observaciones" cols="30" rows="10"><?php echo $servicio->observaciones; ?></textarea>
 
             </div>
 
             <footer class="footer">
-                <button>Cancelar</button>
-                <input type="submit" value="Actualizar" class="boton">
+                <button class="boton2">Cancelar</button>
+                <button class="boton2" type="submit" value="Actualizar">Actualizar</button>
             </footer>
 
         </div>

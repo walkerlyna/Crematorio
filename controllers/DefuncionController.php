@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\Productos;
 use Model\Servicio;
 use Model\Usuario;
 use MVC\Router;
@@ -13,15 +14,20 @@ class DefuncionController
         session_start();
 
         isAuth();
-        
+
         $servicio = Servicio::all();
-        
+        $productos = Productos::all();
 
         $router->render('panel/defunciones', [
-            'servicio' => $servicio
-            
+            'servicio' => $servicio,
+            'productos' => $productos
+
         ]);
     }
+
+    
+
+
 
     public static function actualizar(Router $router)
     {
@@ -52,7 +58,7 @@ class DefuncionController
                     $directorioFecha = $directorioBase;
 
                     // Elimina el archivo existente si existe
-                   
+
 
                     // Obtén la fecha actual en el formato deseado (por ejemplo, "YYYY-MM-DD")
 
@@ -85,7 +91,7 @@ class DefuncionController
                     $directorioFecha = $directorioBase;
 
                     // Elimina el archivo existente si existe
-                    
+
 
                     // Obtén la fecha actual en el formato deseado (por ejemplo, "YYYY-MM-DD")
 
@@ -217,7 +223,7 @@ class DefuncionController
                         $servicio->remisiones = $nombreArchivo;
                     }
                 }
-
+                
                 $servicio->guardar();
 
                 header('Location: /def');
@@ -229,6 +235,32 @@ class DefuncionController
     }
 
     public static function cambiarEstado()
+    {
+        session_start();
+
+        isAuth();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $nuevoEstado = 1; // Cambia esto al nuevo valor deseado
+
+            $servicio = Servicio::find($id);
+            if ($servicio) {
+                $servicio->estado = $nuevoEstado;
+                $resultado = $servicio->guardar();
+
+                if ($resultado) {
+                    header('Location: /def');
+                } else {
+                    echo "Hubo un error al cambiar el estado.";
+                }
+            } else {
+                echo "Servicio no encontrado.";
+            }
+        }
+    }
+
+    public static function cambiarCantidad()
     {
         session_start();
 

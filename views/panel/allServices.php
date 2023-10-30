@@ -13,7 +13,7 @@
 </div>
 
 <main class="tabla bienvenida">
-<div class="nav-tabla">
+    <div class="nav-tabla">
         <div class="tabla-botones">
             <button class="boton" id="abrirModal">
                 <span class="material-symbols-outlined">
@@ -109,6 +109,14 @@
                     <div class="form-section1">
                         <label for="peso_kg">Peso(kg)</label>
                         <input class="block" id="peso_kg" type="text">
+                    </div>
+                    <div class="form-section1">
+                        <label for="fechaNacimiento">Día de nacimiento</label>
+                        <input class="block" id="fechaNacimiento" type="date">
+                    </div>
+                    <div class="form-section1">
+                        <label for="fechaPartida">Día de partida</label>
+                        <input class="block" id="fechaPartida" type="date">
                     </div>
                 </div>
 
@@ -226,136 +234,137 @@
         <tbody>
             <?php
 
-            foreach ($servicio as $servicio) {
+            foreach (array_reverse($servicio) as $servicio) {
+                if ($servicio->estado == 1) {
             ?>
-                <tr class="seleccionable lazy-load">
-                    <td><strong><?php echo $servicio->id ?></strong></td>
-                    <td class="acc clearfix"> <!-- Nueva celda para acciones -->
-                        <div class="tabla-flex">
-                            <a class="open-modal" href="/api/actualizarr?id=<?php echo $servicio->id; ?>&modal=true">
-                                <i class="material-icons" style="font-size: 27px; color: black; float: left;">mode_edit</i>
-                            </a>
+                    <tr class="seleccionable lazy-load">
+                        <td><strong><?php echo $servicio->id ?></strong></td>
+                        <td class="acc clearfix"> <!-- Nueva celda para acciones -->
+                            <div class="tabla-flex">
+                                <a class="open-modal" href="/api/actualizarr?id=<?php echo $servicio->id; ?>&modal=true">
+                                    <i class="material-icons" style="font-size: 27px; color: black; float: left;">mode_edit</i>
+                                </a>
 
-                            <form action="/servicio/eliminarr" method="POST">
-                                <input type="hidden" name="id" value="<?php echo $servicio->id; ?>">
-                                <button class="icono-delete boton" type="submit" style="float: right;">
-                                    <img class="img-ocultar" src="../build/img/hidden.png" alt="Ocultar">
-                                </button>
-                            </form>
+                                <form action="/servicio/desocultar" method="POST">
+                                    <input type="hidden" name="id" value="<?php echo $servicio->id; ?>">
+                                    <button class="icono-delete boton" type="submit" style="float: right;">
+                                        <img class="img-ocultar" src="../build/img/visible.png" alt="Desocultar">
+                                    </button>
+                                </form>
 
-                        </div>
-                    </td>
-                    <td><?php echo $servicio->cliente ?></td>
-                    <td><?php echo $servicio->nombre ?></td>
-                    <td><?php echo date('d/m/Y', strtotime($servicio->fecha)); ?></td>
-                    <td>
-                        <?php
-
-
-                        // Construye la ruta completa para el certificado
-                        $rutaautorizacion = 'autorizacion/' . $servicio->autorizacion;
-
-                        // Verifica si el archivo completo existe
-                        if (file_exists($rutaautorizacion) && is_file($rutaautorizacion)) {
-                            // El archivo existe y es un archivo regular
-                            echo '<a target="_blank" href="/' . $rutaautorizacion . '">Completado</a>';
-                        } else {
-                            echo 'Pendiente';
-                        }
-                        ?>
-                    </td>
-                    <td>
-                        <?php
+                            </div>
+                        </td>
+                        <td><?php echo $servicio->cliente ?></td>
+                        <td><?php echo $servicio->nombre ?></td>
+                        <td><?php echo date('d/m/Y', strtotime($servicio->fecha)); ?></td>
+                        <td>
+                            <?php
 
 
-                        // Construye la ruta completa para el certificado
-                        $rutaevidencia = 'evidencia/' . $servicio->evidencia;
+                            // Construye la ruta completa para el certificado
+                            $rutaautorizacion = 'autorizacion/' . $servicio->autorizacion;
 
-                        // Verifica si el archivo completo existe
-                        if (file_exists($rutaevidencia) && is_file($rutaevidencia)) {
-                            // Si el archivo existe, muestra "Completado" con un enlace
-                            echo '<a target="_blank" href="/' . $rutaevidencia . '">Completado</a>';
-                        } else {
-                            // Si el archivo no existe, muestra un espacio en blanco
-                            echo 'Pendiente';
-                        }
-                        ?>
-                    </td>
-
-                    <td>
-                        <?php
+                            // Verifica si el archivo completo existe
+                            if (file_exists($rutaautorizacion) && is_file($rutaautorizacion)) {
+                                // El archivo existe y es un archivo regular
+                                echo '<a target="_blank" href="/' . $rutaautorizacion . '">Completado</a>';
+                            } else {
+                                echo 'Pendiente';
+                            }
+                            ?>
+                        </td>
+                        <td>
+                            <?php
 
 
-                        // Construye la ruta completa para el certificado
-                        $rutavideo = 'video/' . $servicio->video;
+                            // Construye la ruta completa para el certificado
+                            $rutaevidencia = 'evidencia/' . $servicio->evidencia;
 
-                        // Verifica si el archivo completo existe
-                        if (file_exists($rutavideo) && is_file($rutavideo)) {
-                            // Si el archivo existe, muestra "Completado" con un enlace
-                            echo '<a target="_blank" href="/' . $rutavideo . '">Completado</a>';
-                        } else {
-                            // Si el archivo no existe, muestra un espacio en blanco
-                            echo 'Pendiente';
-                        }
-                        ?>
-                    </td>
-                    <td>
-                        <?php
+                            // Verifica si el archivo completo existe
+                            if (file_exists($rutaevidencia) && is_file($rutaevidencia)) {
+                                // Si el archivo existe, muestra "Completado" con un enlace
+                                echo '<a target="_blank" href="/' . $rutaevidencia . '">Completado</a>';
+                            } else {
+                                // Si el archivo no existe, muestra un espacio en blanco
+                                echo 'Pendiente';
+                            }
+                            ?>
+                        </td>
 
-
-                        // Construye la ruta completa para el certificado
-                        $rutacertificado = 'certificado/' . $servicio->certificado;
-
-                        // Verifica si el archivo completo existe
-                        if (file_exists($rutacertificado) && is_file($rutacertificado)) {
-                            // Si el archivo existe, muestra "Completado" con un enlace
-                            echo '<a target="_blank" href="/' . $rutacertificado . '">Completado</a>';
-                        } else {
-                            // Si el archivo no existe, muestra un espacio en blanco
-                            echo 'Pendiente';
-                        }
-                        ?>
-                    </td>
-                    <td>
-                        <?php
+                        <td>
+                            <?php
 
 
-                        // Construye la ruta completa para el certificado
-                        $rutaremisiones = 'remisiones/' . $servicio->remisiones;
+                            // Construye la ruta completa para el certificado
+                            $rutavideo = 'video/' . $servicio->video;
 
-                        // Verifica si el archivo completo existe
-                        if (file_exists($rutaremisiones) && is_file($rutaremisiones)) {
+                            // Verifica si el archivo completo existe
+                            if (file_exists($rutavideo) && is_file($rutavideo)) {
+                                // Si el archivo existe, muestra "Completado" con un enlace
+                                echo '<a target="_blank" href="/' . $rutavideo . '">Completado</a>';
+                            } else {
+                                // Si el archivo no existe, muestra un espacio en blanco
+                                echo 'Pendiente';
+                            }
+                            ?>
+                        </td>
+                        <td>
+                            <?php
 
-                            // Si el archivo existe, muestra "Completado" con un enlace
-                            echo '<a target="_blank" href="/' . $rutaremisiones . '">Completado</a>';
-                        } else {
-                            // Si el archivo no existe, muestra un espacio en blanco
-                            echo 'Pendiente';
-                        }
-                        ?>
-                    </td>
-                    <td>
-                        <?php
+
+                            // Construye la ruta completa para el certificado
+                            $rutacertificado = 'certificado/' . $servicio->certificado;
+
+                            // Verifica si el archivo completo existe
+                            if (file_exists($rutacertificado) && is_file($rutacertificado)) {
+                                // Si el archivo existe, muestra "Completado" con un enlace
+                                echo '<a target="_blank" href="/' . $rutacertificado . '">Completado</a>';
+                            } else {
+                                // Si el archivo no existe, muestra un espacio en blanco
+                                echo 'Pendiente';
+                            }
+                            ?>
+                        </td>
+                        <td>
+                            <?php
 
 
-                        // Construye la ruta completa para el certificado
-                        $rutacomprobante = 'comprobante/' . $servicio->comprobante;
+                            // Construye la ruta completa para el certificado
+                            $rutaremisiones = 'remisiones/' . $servicio->remisiones;
 
-                        // Verifica si el archivo completo existe
-                        if (file_exists($rutacomprobante) && is_file($rutacomprobante)) {
-                            // Si el archivo existe, muestra "Completado" con un enlace
-                            echo '<a target="_blank" href="/' . $rutacomprobante . '">Completado</a>';
-                        } else {
-                            // Si el archivo no existe, muestra un espacio en blanco
-                            echo 'Pendiente';
-                        }
-                        ?>
-                    </td>
+                            // Verifica si el archivo completo existe
+                            if (file_exists($rutaremisiones) && is_file($rutaremisiones)) {
 
-                </tr>
+                                // Si el archivo existe, muestra "Completado" con un enlace
+                                echo '<a target="_blank" href="/' . $rutaremisiones . '">Completado</a>';
+                            } else {
+                                // Si el archivo no existe, muestra un espacio en blanco
+                                echo 'Pendiente';
+                            }
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+
+
+                            // Construye la ruta completa para el certificado
+                            $rutacomprobante = 'comprobante/' . $servicio->comprobante;
+
+                            // Verifica si el archivo completo existe
+                            if (file_exists($rutacomprobante) && is_file($rutacomprobante)) {
+                                // Si el archivo existe, muestra "Completado" con un enlace
+                                echo '<a target="_blank" href="/' . $rutacomprobante . '">Completado</a>';
+                            } else {
+                                // Si el archivo no existe, muestra un espacio en blanco
+                                echo 'Pendiente';
+                            }
+                            ?>
+                        </td>
+
+                    </tr>
             <?php
+                }
             }
-
             ?>
         </tbody>
     </table>
